@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>MapGenerator</title>
+
+	<script src="libraries/simplex-noise.min.js"></script>
+	<script src="libraries/p5.js"></script>
+	<script src="NoiseMapGenerator.js"></script>
+	<script src="sketch.js"></script>
+
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			overflow: hidden;
+		}
+		canvas {
+			margin: 10px;
+			align-self: center;
+		}
+		.param{
+			font-size: 13px;
+		}
+		input[type="text"] {
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div style="margin: 10px;">
+		<br>
+		<label for="mapWidth" class="param">Width:</label>
+		<input type="text" id="mapWidth" name="mapWidth" size="2" class="mapdata" disabled>
+		<label for="mapHeight" class="param">Heigth:</label>
+		<input type="text" id="mapHeight" name="mapHeight" size="2" class="mapdata" disabled>
+		<label for="noiseScale" class="param">Scale:</label>
+		<input type="text" id="noiseScale" name="noiseScale" size="1" class="mapdata">
+		<label for="octaves" class="param">Octaves:</label>
+		<input type="text" id="octaves" name="octaves" size="1" class="mapdata">
+		<label for="seed" class="param">Seed:</label>
+		<input type="text" id="seed" name="seed" size="1" class="mapdata">
+		<label for="ex" class="param">e:</label>
+		<input type="text" id="ex" name="ex" size="1" class="mapdata">
+		<label for="colour" class="param">C:</label>
+		<input type="checkbox" id="colour" name="colour" class="mapdata" checked>
+		<hr>
+	</div>
+	
+	<script>
+		let mapW = document.getElementById("mapWidth");
+		let mapH = document.getElementById("mapHeight");
+		let scal = document.getElementById("noiseScale");
+		let octv = document.getElementById("octaves");
+		let seed = document.getElementById("seed");
+		let expn = document.getElementById("ex");
+		let colm = document.getElementById("colour");
+
+		let update = function updateMapSettings(){
+			updateMap(getMapData());
+		}
+
+		let md = document.getElementsByClassName("mapdata");
+
+		for(let i = 0; i < md.length; i++){
+			md[i].onchange = update;
+		}
+
+		function setMapData(mapData){
+			mapW.value = mapData.mapWidth;
+			mapH.value = mapData.mapHeight;
+			scal.value = mapData.scale;
+			octv.value = mapData.octaves;
+			seed.value = mapData.seed;
+			expn.value = mapData.ex;
+			colm.checked = mapData.colour;
+		}
+
+		function getMapData(){
+			let mapData = {};
+
+			mapData.mapWidth = parseInt(mapW.value);
+			mapData.mapHeight = parseInt(mapH.value);
+			mapData.scale = parseFloat(scal.value);
+			mapData.octaves = parseInt(octv.value);
+			mapData.seed = parseInt(seed.value);
+			mapData.ex = parseFloat(expn.value);
+			mapData.colour = colm.checked;
+
+			return mapData;
+		}
+
+	</script>
+
+</body>
+</html>
