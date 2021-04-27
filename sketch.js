@@ -24,15 +24,15 @@ function setup() {
 		},
 		sand = {
 			altitude: 0.415,
-			colour: color(255, 204, 0),
+			colour: color(210, 212, 63),
 		},
 		grass1 = {
-			altitude: 0.5,
-			colour: color(23, 176, 3),
+			altitude: 0.46,
+			colour: color(60, 176, 67),
 		},
 		grass2 = {
 			altitude: 0.62,
-			colour: color(20, 151, 2),
+			colour: color(39, 147, 39),
 		},
 		grass3 = {
 			altitude: 0.7,
@@ -40,15 +40,15 @@ function setup() {
 		},
 		rock1 = {
 			altitude: 0.75,
-			colour: color(153, 77, 0),
+			colour: color(96, 77, 25),
 		},
 		rock2 = {
 			altitude: 0.95,
-			colour: color(128, 64, 0),
+			colour: color(75, 50, 8),
 		},
 		snow = {
 			altitude: 1,
-			colour: color(255, 255, 255),
+			colour: color(255, 242, 242),
 		}
 	];
 }
